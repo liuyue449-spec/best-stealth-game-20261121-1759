@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night Ledger — a stealth game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <div id="hud">
+    <span id="hud-level">Level 1 of 3</span>
+    <span id="hud-seals">Seals 0/3</span>
+    <span id="hud-coins">Coins 3</span>
+    <span id="hud-lives">♥♥♥</span>
+    <span id="hud-time">00:00</span>
+    <span id="hud-eye" class="eye">👁 Hidden</span>
+    <span id="hud-message"></span>
+    <span class="hud-buttons">
+      <button id="btn-sound" type="button">🔊 Sound on</button>
+      <button id="btn-restart" type="button">↺ Restart</button>
+    </span>
+  </div>
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <div id="overlay-title" class="overlay">
+    <div class="panel">
+      <h1>NIGHT LEDGER</h1>
+      <p class="tagline">A stealth game in three nights. You are the courier. The archive is
+      guarded, the seals are scattered, and the east door only opens when you
+      hold them all.</p>
+      <ul class="controls">
+        <li><b>WASD / arrows</b> — move</li>
+        <li><b>Shift (hold)</b> — sneak: slow, quiet, harder to spot</li>
+        <li><b>Click / Q</b> — toss a coin: the clink pulls a nearby guard over</li>
+        <li><b>M</b> — mute &nbsp;·&nbsp; <b>R</b> — restart</li>
+      </ul>
+      <p class="tips">Stay out of the yellow cones. Bushes hide you; crates block sight.
+      A guard who grows sure gives chase — break line of sight and he will
+      search where he last saw you, then go back to his patrol. Walking feet
+      are heard up close; sneaking feet are not.</p>
+      <button id="btn-start" type="button" class="big">Begin the night</button>
+      <p class="fine">Three levels · three lives · no one needs to know you were ever here.</p>
+    </div>
+  </div>
+
+  <div id="overlay-clear" class="overlay hidden">
+    <div class="panel">
+      <h1>LEVEL CLEAR</h1>
+      <p class="tagline">Clean. Quiet. On to the next floor.</p>
+    </div>
+  </div>
+
+  <div id="overlay-over" class="overlay hidden">
+    <div class="panel">
+      <h1>CAUGHT</h1>
+      <p class="tagline">The night wins this round. <span id="over-level"></span></p>
+      <button id="btn-retry" type="button" class="big">Try again</button>
+      <p class="fine">Press R to restart.</p>
+    </div>
+  </div>
+
+  <div id="overlay-win" class="overlay hidden">
+    <div class="panel">
+      <h1>NEVER SEEN</h1>
+      <p class="tagline">Every floor, every seal, and the ledger is yours.</p>
+      <p class="stats">Time <b id="win-time">00:00</b> · Spotted <b id="win-spotted">0</b> times</p>
+      <p class="stats">Rank: <b id="win-rank">GHOST</b></p>
+      <button id="btn-again" type="button" class="big">Play again</button>
+      <p class="fine">Press R to play again.</p>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
